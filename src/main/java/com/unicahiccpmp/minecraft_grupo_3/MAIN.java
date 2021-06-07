@@ -44,6 +44,8 @@ public class MAIN {
                     
                     break;
                 case "D": 
+                    eliminarRegistro();
+                    
                    
                     break;
             }
@@ -112,5 +114,30 @@ public class MAIN {
         System.out.println();
         
     }
-    
+    public static void eliminarRegistro(){
+        System.out.println("Escriba el código del dato a eliminar:");
+        int idDato = scan.nextInt();
+  
+        scan.nextLine();
+        ENTRADAS DatoAEliminar = conexionBD.obtenerUnDato(idDato);
+        if (DatoAEliminar.getID() > 0) {
+            System.out.println(SeparadorLinea);
+            System.out.println(DatoAEliminar.obtenerTextoConFormato());
+            System.out.println(SeparadorLinea);
+
+            System.out.println("¿Desea Eliminar el registro? (S/N):");
+            String opcion = scan.nextLine();
+            if (opcion.toUpperCase().equals("S")){
+                conexionBD.eliminarDato(DatoAEliminar);
+                System.out.println("Dato Eliminado. Presione Enter para continuar.");
+            } else {
+                System.out.println("Operacion cancelada. Presione Enter para continuar.");
+            }
+        } else {
+            System.out.println("No existe ningun Dato con ese ID !!! Presione Enter para Continuar.");
+        }
+        
+        scan.nextLine();
+    }
+
 }

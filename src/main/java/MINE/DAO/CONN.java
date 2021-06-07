@@ -94,6 +94,49 @@ public class CONN {
              System.exit(0);
          }
      }
+     public ENTRADAS obtenerUnDato( int idDato) {
+        try{
+            String setenciaSql = "SELECT * from MINECRAFT where ID=%d;";
+            Statement comandoSql = c.createStatement();
+            ResultSet cursorDeDato = comandoSql.executeQuery(
+                String.format(setenciaSql, idDato)
+            );
+            ENTRADAS miRegistro = new ENTRADAS();
+            while ( cursorDeDato.next()){
+                miRegistro.setID(cursorDeDato.getInt("ID"));
+                miRegistro.setMINECRAFTBLOCKNAME(cursorDeDato.getString("MINECRAFTBLOCKNAME"));
+                miRegistro.setMINECRATFTCRAFTRECEIPT(cursorDeDato.getString("MINECRATFTCRAFTRECEIPT"));
+                miRegistro.setMINECRAFTATTACK(cursorDeDato.getInt("MINECRAFTATTACK"));
+                miRegistro.setMINECRAFTDEFENSE(cursorDeDato.getInt("MINECRAFTDEFENSE"));
+            }
+            comandoSql.close();
+            return miRegistro;
+        } catch (Exception e) {
+            System.err.println(" Error " + e.getMessage());
+            System.exit(0);
+            return null;
+        }
+     }
+    
+    public void eliminarDato(ENTRADAS DatoAEliminar){
+        try {
+            String sentenciaSQL = "DELETE from MINECRAFT where ID=%d;";
+            Statement comandoSQL = c.createStatement();
+            comandoSQL.executeUpdate(
+                    String.format(
+                            sentenciaSQL,
+                            DatoAEliminar.getID()
+                    )
+            );
+            comandoSQL.close();
+        } catch(Exception ex){
+            System.err.println(" Error " + ex.getMessage());
+            System.exit(0);
+        }
+   
+    
+
+    }
     
     
 }
