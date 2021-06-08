@@ -1,10 +1,10 @@
 /**
  * Integrantes:
- * •	Alejandro Josué Zúniga Zelaya     0311-2000-00312
- * •	German David Ordóñez Gómez     0801-2001-21597
- * •	Jhonnys Jesús Cálix Chávez         0801-2001-01321
- * •	Julio Alberto Velásquez Alvarez    0201-2001-00620
- * •	Sofía Raquel Ramírez Rodríguez   0801-1999-07288
+   •	Alejandro Josué Zúniga Zelaya     0311-2000-00312
+   •	German David Ordóñez Gómez        0801-2001-21597
+   •	Jhonnys Jesús Cálix Chávez        0801-2001-01321
+   •	Julio Alberto Velásquez Alvarez   0201-2001-00620
+   •	Sofía Raquel Ramírez Rodríguez    0801-1999-07288
  */
 package com.unicahiccpmp.minecraft_grupo_3;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import MINE.DAO.*;
 
-
+/*CODIGO DEL METODO MAIN CREADO POR JHONNYS CALIX JUNTO A ALEJANDRO ZÚNIGA*/
 public class MAIN {
     
     private static String opcion1 = "R";
@@ -41,7 +41,7 @@ public class MAIN {
                    nuevoRegistro();
                     break;
                 case "U": 
-                    
+                    actualizarRegistro();
                     break;
                 case "D": 
                     eliminarRegistro();
@@ -55,7 +55,7 @@ public class MAIN {
     
     }
     
-    
+   /*METODO CREADO POR JULIO VELÁSQUEZ*/ 
     public static void mostrarMenu(){
         System.out.println(SeparadorLinea);
         System.out.println("Menu:");
@@ -64,7 +64,7 @@ public class MAIN {
     }
     
     
-    
+    /*METODO CREADO POR GERMAN ORDOÑEZ*/
     public static void mostrarRegistros(){
         Registros = conexionBD.obtenerDatosRegistros();
         
@@ -84,7 +84,7 @@ public class MAIN {
         
     }
     
-    
+    /*METODO CREADO POR JHONNYS CALIX*/
     public static void nuevoRegistro(){
         System.out.println();
         System.out.println("Obtener nuevos datos");
@@ -114,6 +114,8 @@ public class MAIN {
         System.out.println();
         
     }
+    
+    /*METODO CREADO POR ALEJANDRO ZÚNIGA*/
     public static void eliminarRegistro(){
         System.out.println("Escriba el código del dato a eliminar:");
         int idDato = scan.nextInt();
@@ -140,4 +142,58 @@ public class MAIN {
         scan.nextLine();
     }
 
+    /*METODO CREADO POR SOFÍA RAMIREZ JUNTO A JULIO VELÁSQUEZ*/
+    public static void actualizarRegistro(){
+        System.out.println("Escriba el codigo del dato que desea Actualizar: ");
+        int idDato = scan.nextInt();
+        
+        
+        scan.nextLine();
+        
+        ENTRADAS registroActualizar = conexionBD.obtenerUnDato(idDato);
+        
+        if(registroActualizar.getID() > 0)
+        {
+            System.out.println(SeparadorLinea);
+            System.out.println(registroActualizar.obtenerTextoConFormato());
+            System.out.println(SeparadorLinea);
+            System.out.println("MINECRAFTBLOCKNAME ("+registroActualizar.getMINECRAFTBLOCKNAME()+"):");
+            String MINECRAFTBLOCKNAME = scan.nextLine();
+            if(!MINECRAFTBLOCKNAME.isEmpty() && !MINECRAFTBLOCKNAME.equals(registroActualizar.getMINECRAFTBLOCKNAME()))
+            {
+                registroActualizar.setMINECRAFTBLOCKNAME(MINECRAFTBLOCKNAME);
+            }
+            
+            System.out.println("MINECRATFTCRAFTRECEIPT ("+ registroActualizar.getMINECRATFTCRAFTRECEIPT()+"):");
+            String MINECRATFTCRAFTRECEIPT =scan.nextLine();
+            if(!MINECRATFTCRAFTRECEIPT.isEmpty() && !MINECRATFTCRAFTRECEIPT.equals(registroActualizar.getMINECRATFTCRAFTRECEIPT()))
+            {
+                registroActualizar.setMINECRATFTCRAFTRECEIPT(MINECRATFTCRAFTRECEIPT);
+            }
+            
+            System.out.println("MINECRAFTATTACK ("+ registroActualizar.getMINECRAFTATTACK()+"):");
+            String MINECRAFTATTACK  =scan.nextLine();
+            if(!MINECRAFTATTACK.isEmpty() && !MINECRAFTATTACK.equals(registroActualizar.getMINECRAFTATTACK()))
+            {
+                registroActualizar.setMINECRAFTATTACK(Integer.valueOf(MINECRAFTATTACK));
+            }
+            
+            System.out.println("MINECRAFTDEFENSE ("+ registroActualizar.getMINECRAFTDEFENSE()+"):");
+            String MINECRAFTDEFENSE=scan.nextLine();
+            if(!MINECRAFTDEFENSE.isEmpty() && !MINECRAFTDEFENSE.equals(registroActualizar.getMINECRAFTDEFENSE()))
+            {
+                registroActualizar.setMINECRAFTDEFENSE(Integer.valueOf(MINECRAFTDEFENSE));
+            }
+            
+            System.out.println(registroActualizar.obtenerTextoConFormato());
+            conexionBD.actualizarRegistro(registroActualizar);
+            System.out.println("Registro Actualizado!!! Presione ENTER para continuar.");
+            
+        }
+        else{
+            System.out.println("No existe Registro!!! Presione Enter para continuar.");
+        }
+        
+        scan.nextLine();
+    }
 }

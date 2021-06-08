@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>SQLITE</groupId>
-            <artifactId>lite</artifactId>
+            <groupId>Minecraft</groupId>
+            <artifactId>Minecraft</artifactId>
             <version>0.1</version>
         </dependency>
     </dependencies>

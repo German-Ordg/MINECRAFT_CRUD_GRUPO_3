@@ -1,10 +1,10 @@
 /**
  * Integrantes:
- * •	Alejandro Josué Zúniga Zelaya     0311-2000-00312
- * •	German David Ordóñez Gómez     0801-2001-21597
- * •	Jhonnys Jesús Cálix Chávez         0801-2001-01321
- * •	Julio Alberto Velásquez Alvarez    0201-2001-00620
- * •	Sofía Raquel Ramírez Rodríguez   0801-1999-07288
+   •	Alejandro Josué Zúniga Zelaya      0311-2000-00312
+   •	German David Ordóñez Gómez         0801-2001-21597
+   •	Jhonnys Jesús Cálix Chávez         0801-2001-01321
+   •	Julio Alberto Velásquez Alvarez    0201-2001-00620
+   •	Sofía Raquel Ramírez Rodríguez     0801-1999-07288
  */
 package MINE.DAO;
 
@@ -79,14 +79,15 @@ public class ENTRADAS {
         this.MINECRAFTDEFENSE = MINECRAFTDEFENSE;
     }
     
-   
-   
+   /*ENCAPSULAMIENTO HECHO POR ALEJANDRO ZÚNIGA*/
     private int ID;
     private String MINECRAFTBLOCKNAME;
     private String MINECRATFTCRAFTRECEIPT;
     private int MINECRAFTATTACK;
     private int MINECRAFTDEFENSE;
     
+    
+    /*METODO CREADO POR GERMAN ORDOÑEZ*/
     public String obtenerTextoConFormato(){
         return String.format(
                 "%d\t%-25s\t%-25s\t%-25d\t%-25d",
@@ -97,6 +98,6 @@ public class ENTRADAS {
                 MINECRAFTDEFENSE
         );
     }
-    
-    
+
+   
 }
