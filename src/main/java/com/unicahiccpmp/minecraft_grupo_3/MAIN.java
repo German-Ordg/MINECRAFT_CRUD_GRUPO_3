@@ -5,6 +5,7 @@
    •	Jhonnys Jesús Cálix Chávez        0801-2001-01321
    •	Julio Alberto Velásquez Alvarez   0201-2001-00620
    •	Sofía Raquel Ramírez Rodríguez    0801-1999-07288
+   •	Erick Sebastian Moncada Rubi      0801-2000-17208
  */
 package com.unicahiccpmp.minecraft_grupo_3;
 
